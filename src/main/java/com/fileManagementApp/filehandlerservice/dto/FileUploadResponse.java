@@ -3,12 +3,21 @@ package com.fileManagementApp.filehandlerservice.dto;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 @Component
 @Scope(value = "prototype")
+@ApiModel(description = "Response for the file upload operation.")
 public class FileUploadResponse {
 	
+	@ApiModelProperty(notes = "Name of the uploaded file.")
 	private String fileName;
+	
+	@ApiModelProperty(notes = "Content type of the uploaded file.")
 	private String contentType;
+	
+	@ApiModelProperty(notes = "Download link for the uploaded file.")
 	private String url;
 	
 	public String getFileName() {

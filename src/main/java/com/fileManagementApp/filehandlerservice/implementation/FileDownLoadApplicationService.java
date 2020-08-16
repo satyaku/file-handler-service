@@ -14,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.fileManagementApp.filehandlerservice.exceptions.InvalidResourceException;
 import com.fileManagementApp.filehandlerservice.interfaces.IFileDownLoadApplicationService;
 import com.fileManagementApp.filehandlerservice.interfaces.IFileDownloadDomainService;
 import com.fileManagementApp.filehandlerservice.interfaces.IInputValidationService;
@@ -54,6 +55,9 @@ public class FileDownLoadApplicationService implements IFileDownLoadApplicationS
 			e.printStackTrace();
 		}
 		if(ex != null){
+			if(ex instanceof InvalidResourceException){
+				return new ResponseEntity<>(resource,HttpStatus.NOT_FOUND);
+			}
 			return new ResponseEntity<>(resource,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		LOGGER.info("FileDownLoadApplicationService successfully executed in time : {}",System.currentTimeMillis() - start);

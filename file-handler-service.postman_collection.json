@@ -48,7 +48,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8081/fileManagement/v1/download/kafka.mp4",
+					"raw": "http://localhost:8081/fileManagement/v1/download/:fileName",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -58,7 +58,13 @@
 						"fileManagement",
 						"v1",
 						"download",
-						"kafka.mp4"
+						":fileName"
+					],
+					"variable": [
+						{
+							"key": "fileName",
+							"value": "kafka.mp4"
+						}
 					]
 				}
 			},
@@ -70,7 +76,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:8081/fileManagement/v1/delete/kafka.mp4",
+					"raw": "localhost:8081/fileManagement/v1/delete/:fileName",
 					"host": [
 						"localhost"
 					],
@@ -79,7 +85,13 @@
 						"fileManagement",
 						"v1",
 						"delete",
-						"kafka.mp4"
+						":fileName"
+					],
+					"variable": [
+						{
+							"key": "fileName",
+							"value": "CopyOfkafka.mp4"
+						}
 					]
 				}
 			},
@@ -91,7 +103,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "localhost:8081/fileManagement/v1/copy/kafka.mp4",
+					"raw": "localhost:8081/fileManagement/v1/copy/:fileName",
 					"host": [
 						"localhost"
 					],
@@ -100,7 +112,13 @@
 						"fileManagement",
 						"v1",
 						"copy",
-						"kafka.mp4"
+						":fileName"
+					],
+					"variable": [
+						{
+							"key": "fileName",
+							"value": "kafka.mp4"
+						}
 					]
 				}
 			},

@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fileManagementApp.filehandlerservice.interfaces.IFileDownLoadApplicationService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+
 @RestController
 @RequestMapping("/fileManagement/v1")
 public class FileReaderController {
@@ -24,7 +27,10 @@ public class FileReaderController {
 	private IFileDownLoadApplicationService fileDownLoadApplicationService;
 
 	@RequestMapping(method = RequestMethod.GET, value = "/download/{fileName}")
-	public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
+	@ApiOperation(value = "Download the file by its name.", notes = "Provide the name of the file in the request and hit the url...Bingo!!!! your download will start..", response = Resource.class)
+	public ResponseEntity<Resource> downloadFile(
+			@ApiParam(value = "The name of the file which is to be downloaded.", required = true) @PathVariable String fileName,
+			HttpServletRequest request) {
 
 		LOGGER.debug("Rest Endpoint '/fileManagement/v1/download/{}' is invoked.", fileName);
 		return fileDownLoadApplicationService.downloadFile(fileName, request);

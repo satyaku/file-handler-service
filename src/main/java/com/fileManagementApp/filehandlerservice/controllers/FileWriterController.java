@@ -19,6 +19,9 @@ import com.fileManagementApp.filehandlerservice.interfaces.IFileCopyApplicationS
 import com.fileManagementApp.filehandlerservice.interfaces.IFileDeletionApplicationService;
 import com.fileManagementApp.filehandlerservice.interfaces.IFileUploadApplicationService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+
 @RestController
 @RequestMapping("/fileManagement/v1")
 public class FileWriterController {
@@ -35,21 +38,24 @@ public class FileWriterController {
 	private IFileCopyApplicationService fileCopyApplicationService;
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/upload")
-	public ResponseEntity<FileUploadResponse> upload(@RequestParam MultipartFile file){
+	@ApiOperation(value = "Upload the file.", notes = "Provide the location of the file in the request and hit the url.. the upload will start..", response = FileUploadResponse.class)
+	public ResponseEntity<FileUploadResponse> upload(@ApiParam(value = "The name of the file which is to be uploaded.", required = true) @RequestParam MultipartFile file){
 		
 		LOGGER.debug("Rest Endpoint '/fileManagement/v1/upload' is invoked.");
 		return fileUploadApplicationService.uploadFile(file);
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE, value = "/delete/{fileName}")
-	public ResponseEntity<FileDeletionResponse> deletePath(@PathVariable String fileName){
+	@ApiOperation(value = "Delete the file by its name.", notes = "Provide the name of the file in the request and hit the url...the file will be deleted..", response = FileDeletionResponse.class)
+	public ResponseEntity<FileDeletionResponse> deletePath(@ApiParam(value = "The name of the file which is to be deleted.", required = true) @PathVariable String fileName){
 		
 		LOGGER.debug("Rest Endpoint '/fileManagement/v1/delete/{}' is invoked.",fileName);
 		return fileDeletionApplicationService.deleteFile(fileName);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/copy/{fileName}")
-	public ResponseEntity<FileCopyResponse> copyFile(@PathVariable String fileName){
+	@ApiOperation(value = "Copy the file by its name.", notes = "Provide the name of the file in the request and hit the url... the file will be copied with name CopyOf+filename..", response = FileCopyResponse.class)
+	public ResponseEntity<FileCopyResponse> copyFile(@ApiParam(value = "The name of the file which is to be copied.", required = true) @PathVariable String fileName){
 		
 		LOGGER.debug("Rest Endpoint '/fileManagement/v1/copy/{}' is invoked.",fileName);
 
