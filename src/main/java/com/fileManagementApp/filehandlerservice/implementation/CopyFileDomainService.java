@@ -31,7 +31,7 @@ public class CopyFileDomainService implements ICopyFileDomainService {
 		path[1] = Paths.get(fileHubLocation)
 				.toAbsolutePath()
 				.resolve("CopyOf"+fileName);
-		Files.copy(path[0], path[1], StandardCopyOption.COPY_ATTRIBUTES);
+		Files.copy(path[0], path[1], StandardCopyOption.REPLACE_EXISTING);
 		LOGGER.debug("CopyFileDomainService executed successfully with paths in response : src - {}, dest - {}", path[0], path[1]);
 		return path;
 	}
