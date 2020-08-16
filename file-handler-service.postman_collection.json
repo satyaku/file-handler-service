@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "fe8de690-6db6-42d0-970a-78f3142951ed",
+		"name": "file-handler-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "upload file",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/satyamku/Videos/Lync Recordings/kafka.mp4"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8081/fileManagement/v1/upload",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"fileManagement",
+						"v1",
+						"upload"
+					],
+					"query": [
+						{
+							"key": "file",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "download file",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/fileManagement/v1/download/kafka.mp4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"fileManagement",
+						"v1",
+						"download",
+						"kafka.mp4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete file",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/fileManagement/v1/delete/kafka.mp4",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"fileManagement",
+						"v1",
+						"delete",
+						"kafka.mp4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "copy file",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/fileManagement/v1/copy/kafka.mp4",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"fileManagement",
+						"v1",
+						"copy",
+						"kafka.mp4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api docs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/v2/api-docs",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v2",
+						"api-docs"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
