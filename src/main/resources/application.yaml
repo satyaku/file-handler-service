@@ -1,0 +1,25 @@
+#                                  Application Settings                           #
+server:
+  port: 8081
+  
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+
+#Logging
+logging:
+  level:
+    org:
+      springframework: INFO
+      apache: INFO
+    com:
+      fileManagementApp:
+        filehandlerservice: DEBUG
+
+#Config values
+file: 
+  upload: 
+    location: filehub
